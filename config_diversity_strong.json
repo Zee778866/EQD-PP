@@ -1,0 +1,53 @@
+{
+  "experiment_name": "QDOES_Diversity_Strong_Enhanced",
+
+  "//_COMMENT_": "定义要运行的4个大规模数据集",
+  "target_datasets": [
+    "higgs",
+    "covertype",
+    "kddcup99",
+    "miniboone"
+  ],
+
+  "n_models": 14,
+  "n_iterations": 120,
+  "explainability_weight": 0.4,
+  "enable_expertise_aware": true,
+  "random_state": 456,
+
+  "statistical_test": {
+    "enable": true,
+    "n_repeats": 10,
+    "seeds": [42, 1024, 2048, 7, 99, 123, 888, 666, 512, 303],
+    "significance_level": 0.05
+  },
+
+  "//_COMMENT_2": "已移除 SOTA 模型，专注于验证集成算法本身相对于基础模型的提升",
+  "sota_benchmarks": [],
+
+  "performance_guard": {
+    "enable": true,
+    "max_performance_drop": 0.02,
+    "performance_gap_threshold": 0.08,
+    "fallback_strategy": "auto",
+    "enable_dynamic_selection": true,
+    "quality_std_threshold": 0.05
+  },
+
+  "expertise_analysis": {
+    "expertise_threshold": 0.5,
+    "nonlinearity_threshold": 0.6,
+    "diversity_weight": 0.5,
+    "min_active_models": 5
+  },
+
+  "qdo_config": {
+    "name": "expertise_enhanced",
+    "description": "专长感知增强配置",
+    "explainability_weight": 0.4,
+    "n_iterations": 120,
+    "max_elites": 40,
+    "batch_size": 15,
+    "min_non_zero_models": 5
+  }
+}
